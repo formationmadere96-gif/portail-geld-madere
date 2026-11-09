@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <title>Documentation · Portail GELD</title>
+  <style>
+    :root { --bg:#101820; --panel:#192630; --ink:#f4f7fa; --muted:#b5c0c9; --orange:#ff941f; --line:rgba(255,255,255,.1); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; }
+    .topbar { border-bottom:1px solid var(--line); background:#121c25; }
+    .topbar-inner { max-width:1050px; margin:auto; padding:13px 22px; display:flex; align-items:center; justify-content:space-between; gap:15px; }
+    .brand { display:flex; align-items:center; margin:0; font-size:1rem; letter-spacing:.04em; }
+    .brand img { width:40px; height:40px; margin-right:9px; object-fit:contain; }
+    .brand span { color:#b9c3cc; }
+    .back { color:#b9c3cc; font-weight:700; text-decoration:none; }
+    .back:hover { text-decoration:underline; }
+    main { max-width:1050px; margin:auto; padding:34px 22px 60px; }
+    .intro { padding:clamp(22px,5vw,42px); border:1px solid var(--line); border-radius:21px; background:linear-gradient(120deg,#1b2b38,#16212b); }
+    .kicker { margin:0 0 7px; color:#aeb9c3; text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; font-weight:850; }
+    h2 { margin:0; font-size:clamp(2.45rem,6vw,3.8rem); line-height:1.05; font-weight:900; letter-spacing:-.035em; }
+    .intro p:last-child { margin:12px 0 0; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:22px; }
+    .card { display:block; padding:24px; border:1px solid var(--line); border-radius:18px; background:var(--panel); color:var(--ink); text-decoration:none; transition:border-color .18s,transform .18s; }
+    .card:hover { transform:translateY(-3px); border-color:rgba(255,148,31,.5); }
+    .icon { display:block; margin-bottom:12px; font-size:2rem; }
+    .card h3 { margin:0; font-size:1.7rem; font-weight:900; letter-spacing:.035em; text-transform:uppercase; }
+    .card p { margin:5px 0 0; color:var(--muted); }
+    footer { padding:20px; border-top:1px solid var(--line); color:#aab5bf; text-align:center; font-size:.85rem; }
+    footer span { color:#aeb9c3; }
+    @media(max-width:600px) { .topbar-inner { padding:10px 15px; } .brand { font-size:.88rem; } .brand img { width:34px; height:34px; } main { padding:18px 14px 40px; } .intro { padding:21px 18px; border-radius:16px; } .grid { grid-template-columns:1fr; gap:9px; margin-top:14px; } .card { display:grid; grid-template-columns:48px 1fr; grid-template-rows:auto auto; align-items:center; padding:14px; border-radius:13px; } .icon { grid-column:1; grid-row:1 / span 2; margin:0; font-size:1.7rem; } .card h3 { grid-column:2; grid-row:1; font-size:1.35rem; } .card p { grid-column:2; grid-row:2; font-size:.84rem; } }
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><h1 class="brand"><img src="LOGO.png" alt="Logo GELD MADERE">PORTAIL <span>&nbsp;GELD MADERE</span></h1><a class="back" href="index.html">← Retour au portail</a></div></header>
+  <main>
+    <section class="intro"><p class="kicker">Ressources de la spécialité</p><h2>DOCUMENTATION 📚</h2><p>Retrouvez les références et fiches utiles au GELD.</p></section>
+    <div class="grid">
+      <a class="card" href="doctrine.html"><span class="icon" aria-hidden="true">📘</span><h3>DOCTRINE</h3><p>Textes, consignes et documents de référence.</p></a>
+      <article class="card"><span class="icon" aria-hidden="true">🗂️</span><h3>FICHES</h3><p>Fiches pratiques et supports à consulter.</p></article>
+    </div>
+  </main>
+  <footer>Portail GELD MADERE <span>•</span> Documentation</footer>
+</body>
+</html>
