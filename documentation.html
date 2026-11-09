@@ -25,6 +25,7 @@
     .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:22px; }
     .card { display:block; padding:24px; border:1px solid var(--line); border-top:3px solid var(--tile,#ff941f); border-radius:18px; background:linear-gradient(145deg,#1b2d39,var(--panel)); color:var(--ink); text-decoration:none; transition:border-color .18s,transform .18s; }
     .card:nth-child(2) { --tile:#65a9c9; }
+    .card:nth-child(3) { --tile:#a58bd3; }
     .card:hover { transform:translateY(-3px); border-color:rgba(255,148,31,.5); }
     .icon { display:block; width:max-content; margin-bottom:12px; padding:7px 9px; border-radius:12px; background:rgba(255,148,31,.14); font-size:2rem; }
     .card h3 { margin:0; font-size:1.7rem; font-weight:900; letter-spacing:.035em; text-transform:uppercase; }
@@ -41,6 +42,7 @@
     <div class="grid">
       <a class="card" href="doctrine.html"><span class="icon" aria-hidden="true">📘</span><h3>DOCTRINE</h3><p>Textes, consignes et documents de référence.</p></a>
       <article class="card"><span class="icon" aria-hidden="true">🗂️</span><h3>FICHES</h3><p>Fiches pratiques et supports à consulter.</p></article>
+      <a class="card" href="retex.html"><span class="icon" aria-hidden="true">📄</span><h3>RETEX</h3><p>Retours d’expérience de la spécialité.</p></a>
     </div>
   </main>
   <footer>Portail GELD MADERE <span>•</span> Documentation</footer>
