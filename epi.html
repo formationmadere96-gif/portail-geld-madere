@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <title>EPI · Portail GELD</title>
+  <style>
+    :root { --bg:#101820; --panel:#192630; --ink:#f4f7fa; --muted:#b5c0c9; --line:rgba(255,255,255,.1); }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; }
+    .topbar { border-bottom:1px solid var(--line); background:#121c25; }
+    .topbar-inner { max-width:1050px; margin:auto; padding:13px 22px; display:flex; align-items:center; justify-content:space-between; gap:15px; }
+    .brand { display:flex; align-items:center; margin:0; font-size:1rem; letter-spacing:.04em; }
+    .brand img { width:40px; height:40px; margin-right:9px; object-fit:contain; }
+    .brand span { color:#b9c3cc; }
+    .back { color:#b9c3cc; font-weight:700; text-decoration:none; }
+    .back:hover { text-decoration:underline; }
+    main { max-width:1050px; margin:auto; padding:34px 22px 60px; }
+    .intro { padding:clamp(22px,5vw,42px); border:1px solid var(--line); border-radius:21px; background:linear-gradient(120deg,#1b2b38,#16212b); }
+    .kicker { margin:0 0 7px; color:#aeb9c3; text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; font-weight:850; }
+    h2 { margin:0; font-size:clamp(2.45rem,6vw,3.8rem); line-height:1.05; font-weight:900; letter-spacing:-.035em; }
+    .intro p:last-child { margin:12px 0 0; color:var(--muted); }
+    .list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:22px; }
+    .item { display:flex; align-items:center; gap:14px; min-height:88px; padding:17px 20px; border:1px solid var(--line); border-radius:16px; background:var(--panel); }
+    .doc-icon { display:grid; flex:0 0 42px; place-items:center; width:42px; height:42px; border-radius:13px; background:rgba(255,255,255,.08); font-size:1.45rem; }
+    .item h3 { margin:0; font-size:1.03rem; line-height:1.35; letter-spacing:.02em; }
+    footer { padding:20px; border-top:1px solid var(--line); color:#aab5bf; text-align:center; font-size:.85rem; }
+    footer span { color:#aeb9c3; }
+    @media(max-width:600px) { .topbar-inner { padding:10px 15px; } .brand { font-size:.88rem; } .brand img { width:34px; height:34px; } main { padding:18px 14px 40px; } .intro { padding:21px 18px; border-radius:16px; } .list { grid-template-columns:1fr; gap:8px; margin-top:14px; } .item { min-height:70px; padding:12px 14px; border-radius:13px; } .item h3 { font-size:.96rem; } }
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><h1 class="brand"><img src="LOGO.png" alt="Logo GELD MADERE">PORTAIL <span>&nbsp;GELD MADERE</span></h1><a class="back" href="index.html">← Retour au portail</a></div></header>
+  <main>
+    <section class="intro"><p class="kicker">Ressources de la spécialité</p><h2>EPI</h2><p>Formulaires et informations sur les équipements de protection individuelle.</p></section>
+    <div class="list">
+      <article class="item"><span class="doc-icon" aria-hidden="true">📝</span><h3>FORMULAIRE (à remplir)</h3></article>
+      <article class="item"><span class="doc-icon" aria-hidden="true">👨‍🚒</span><h3>TAILLE EPI</h3></article>
+    </div>
+  </main>
+  <footer>Portail GELD MADERE <span>•</span> EPI</footer>
+</body>
+</html>
