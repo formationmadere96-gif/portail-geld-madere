@@ -9,29 +9,30 @@
     :root { --bg:#101820; --panel:#192630; --ink:#f4f7fa; --muted:#b5c0c9; --line:rgba(255,255,255,.1); }
     * { box-sizing:border-box; }
     body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; }
-    .topbar { border-bottom:1px solid var(--line); background:#121c25; }
+    .topbar { border-bottom:2px solid rgba(255,148,31,.35); background:#121c25; }
     .topbar-inner { max-width:1050px; margin:auto; padding:13px 22px; display:flex; align-items:center; justify-content:space-between; gap:15px; }
-    .brand { display:flex; align-items:center; margin:0; font-size:1rem; letter-spacing:.04em; }
+    .brand { display:flex; align-items:center; margin:0; font-size:2rem; letter-spacing:.04em; font-weight:950; }
     .brand img { width:40px; height:40px; margin-right:9px; object-fit:contain; }
     .brand span { color:#b9c3cc; }
     .back { color:#b9c3cc; font-weight:700; text-decoration:none; }
     .back:hover { text-decoration:underline; }
     main { max-width:1050px; margin:auto; padding:34px 22px 60px; }
-    .intro { padding:clamp(22px,5vw,42px); border:1px solid var(--line); border-radius:21px; background:linear-gradient(120deg,#1b2b38,#16212b); }
+    .intro { padding:clamp(22px,5vw,42px); border:1px solid var(--line); border-bottom:3px solid rgba(255,148,31,.55); border-radius:21px; background:linear-gradient(120deg,rgba(45,63,77,.92),#16212b); }
     .kicker { margin:0 0 7px; color:#aeb9c3; text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; font-weight:850; }
     h2 { margin:0; font-size:clamp(2.45rem,6vw,3.8rem); line-height:1.05; font-weight:900; letter-spacing:-.035em; }
     .intro p:last-child { margin:12px 0 0; color:var(--muted); }
     .list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:22px; }
-    .item { display:flex; align-items:center; gap:14px; min-height:88px; padding:17px 20px; border:1px solid var(--line); border-radius:16px; background:var(--panel); }
-    .doc-icon { display:grid; flex:0 0 42px; place-items:center; width:42px; height:42px; border-radius:13px; background:rgba(255,255,255,.08); font-size:1.45rem; }
+    .item { display:flex; align-items:center; gap:14px; min-height:88px; padding:17px 20px; border:1px solid var(--line); border-left:3px solid var(--tile,#ff941f); border-radius:16px; background:linear-gradient(110deg,rgba(255,148,31,.06),var(--panel) 45%); }
+    .item:nth-child(2) { --tile:#65a9c9; } .item:nth-child(3) { --tile:#a58bd3; } .item:nth-child(4) { --tile:#d5b35b; } .item:nth-child(5) { --tile:#65b69c; }
+    .doc-icon { display:grid; flex:0 0 42px; place-items:center; width:42px; height:42px; border-radius:13px; background:rgba(255,148,31,.14); background:color-mix(in srgb,var(--tile,#ff941f) 18%,#192630); font-size:1.45rem; }
     .item h3 { margin:0; font-size:1.03rem; line-height:1.35; letter-spacing:.02em; }
     footer { padding:20px; border-top:1px solid var(--line); color:#aab5bf; text-align:center; font-size:.85rem; }
     footer span { color:#aeb9c3; }
-    @media(max-width:600px) { .topbar-inner { padding:8px 13px; } .brand { font-size:.8rem; } .brand img { width:30px; height:30px; } main { padding:13px 12px 28px; } .intro { padding:14px 15px; border-radius:13px; } .kicker, .intro p:last-child { display:none; } h2 { font-size:1.55rem; } .list { grid-template-columns:1fr; gap:7px; margin-top:10px; } .item { min-height:58px; padding:9px 11px; border-radius:11px; } .doc-icon, .icon { flex-basis:34px; width:34px; height:34px; font-size:1.2rem; } .item h3 { font-size:.9rem; } .back { font-size:.82rem; } }
+    @media(max-width:600px) { .topbar-inner { padding:8px 13px; } .brand { font-size:1.8rem; } .brand img { width:44px; height:44px; } main { padding:13px 12px 28px; } .intro { padding:14px 15px; border-radius:13px; } .kicker, .intro p:last-child { display:none; } h2 { font-size:1.55rem; } .list { grid-template-columns:1fr; gap:7px; margin-top:10px; } .item { min-height:58px; padding:9px 11px; border-radius:11px; } .doc-icon, .icon { flex-basis:34px; width:34px; height:34px; font-size:1.2rem; } .item h3 { font-size:.9rem; } .back { font-size:.82rem; } }
   </style>
 </head>
 <body>
-  <header class="topbar"><div class="topbar-inner"><h1 class="brand"><img src="LOGO.png" alt="Logo GELD MADERE">PORTAIL <span>&nbsp;GELD MADERE</span></h1><a class="back" href="documentation.html">← Documentation</a></div></header>
+  <header class="topbar"><div class="topbar-inner"><h1 class="brand"><img src="LOGO.png" alt="Logo GELD MADERE">GELD MADERE</h1><a class="back" href="documentation.html">← Documentation</a></div></header>
   <main>
     <section class="intro"><p class="kicker">Documentation</p><h2>DOCTRINE</h2><p>Guides et retours d’expérience de la spécialité.</p></section>
     <div class="list">
