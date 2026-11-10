@@ -1,0 +1,4 @@
+.navigation-progress { position: fixed; inset: 0 0 auto; z-index: 2147483647; height: 3px; background: #ffe4c4; overflow: hidden; pointer-events: none; }
+.navigation-progress::after { content: ""; display: block; width: 35%; height: 100%; background: #ff941f; animation: navigation-progress 1.25s ease-in-out infinite; }
+@keyframes navigation-progress { from { transform: translateX(-100%); } to { transform: translateX(286%); } }
+@media (prefers-reduced-motion: reduce) { .navigation-progress::after { width: 100%; animation: none; } }
