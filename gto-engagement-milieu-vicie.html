@@ -9,13 +9,19 @@ body { margin: 0; background: #fff; color: #101820; font: 16px system-ui, sans-s
 #status { padding: 1rem; }
 #viewer { max-width: 1000px; margin: 0 auto; }
 #viewer canvas { display: block; width: 100%; height: auto; margin: 0 auto; background: white; }
+#loading { position: fixed; inset: 0 0 auto; height: 3px; background: #ffe4c4; overflow: hidden; }
+#loading::after { content: ""; display: block; width: 35%; height: 100%; background: #ff941f; animation: loading 1.25s ease-in-out infinite; }
+@keyframes loading { from { transform: translateX(-100%); } to { transform: translateX(286%); } }
+@media (prefers-reduced-motion: reduce) { #loading::after { width: 100%; animation: none; } }
 </style>
 </head>
 <body>
-<p id="status" role="status">Chargement du PDF…</p>
+<div id="loading" role="progressbar" aria-label="Chargement du PDF"></div>
+<p id="status" role="status" hidden></p>
 <noscript>Activez JavaScript pour afficher ou télécharger le PDF.</noscript>
 <main id="viewer" aria-label="Document GTO Engagement en milieu vicié"></main>
 <script type="module">
+const loading = document.getElementById("loading");
 const status = document.getElementById("status");
 const viewer = document.getElementById("viewer");
 const library = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/";
@@ -56,11 +62,12 @@ async function displayPdf() {
       transform: [pixelRatio, 0, 0, pixelRatio, 0, 0],
     }).promise;
     viewer.append(canvas);
-    status.hidden = true;
+    loading.hidden = true;
   }
 }
 
 displayPdf().catch(() => {
+  loading.hidden = true;
   status.hidden = false;
   status.textContent = "Le document n’a pas pu être affiché. Actualisez la page pour réessayer.";
 });
