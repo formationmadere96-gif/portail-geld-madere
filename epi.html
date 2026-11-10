@@ -23,6 +23,8 @@
     .intro p:last-child { margin:12px 0 0; color:var(--muted); }
     .list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:22px; }
     .item { display:flex; align-items:center; gap:14px; min-height:88px; padding:17px 20px; border:1px solid var(--line); border-left:3px solid var(--tile,#ff941f); border-radius:16px; background:linear-gradient(110deg,rgba(255,148,31,.06),var(--panel) 45%); }
+    a.item { color:var(--ink); text-decoration:none; transition:transform .18s,border-color .18s,background .18s; }
+    a.item:hover, a.item:focus-visible { border-color:rgba(255,148,31,.55); background:linear-gradient(110deg,rgba(255,148,31,.14),var(--panel) 55%); transform:translateY(-2px); outline:none; }
     .item:nth-child(2) { --tile:#65a9c9; }
     .doc-icon { display:grid; flex:0 0 42px; place-items:center; width:42px; height:42px; border-radius:13px; background:rgba(255,148,31,.14); background:color-mix(in srgb,var(--tile,#ff941f) 18%,#192630); font-size:1.45rem; }
     .item h3 { margin:0; font-size:1.03rem; line-height:1.35; letter-spacing:.02em; }
