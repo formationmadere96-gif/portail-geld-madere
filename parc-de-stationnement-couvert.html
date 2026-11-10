@@ -17,14 +17,12 @@ a { color: #ffd196; }
 <header>
   <a href="fiches.html">Retour aux fiches</a>
   <h1>PARC DE STATIONNEMENT COUVERT</h1>
-  <a id="download" download="PSC.pdf" hidden>Télécharger le PDF</a>
 </header>
 <p id="status" role="status">Chargement du PDF…</p>
 <noscript>Activez JavaScript pour afficher ou télécharger le PDF.</noscript>
 <main id="viewer" aria-label="Document Parc de stationnement couvert"></main>
 <script type="module">
 const status = document.getElementById("status");
-const download = document.getElementById("download");
 const viewer = document.getElementById("viewer");
 const library = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/";
 
@@ -39,8 +37,6 @@ async function displayPdf() {
   ]);
   const original = new Blob(parts, {type: "application/pdf"});
   if (original.size !== 6454055) throw new Error("PDF incomplet");
-  download.href = URL.createObjectURL(original);
-  download.hidden = false;
   pdfjs.GlobalWorkerOptions.workerSrc = library + "legacy/build/pdf.worker.mjs";
   const pdf = await pdfjs.getDocument({
     data: await original.arrayBuffer(),
