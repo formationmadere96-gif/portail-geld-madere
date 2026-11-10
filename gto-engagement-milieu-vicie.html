@@ -6,45 +6,63 @@
 <title>GTO Engagement en milieu vicié · Portail GELD</title>
 <style>
 body { margin: 0; background: #101820; color: #f4f7fa; font: 16px system-ui, sans-serif; }
-header, #status { padding: 1rem; }
-h1 { font-size: 1.2rem; margin: .5rem 0; }
-a { color: #ffd196; }
-iframe { width: 100%; height: 85vh; border: 0; background: #fff; }
+#status { padding: 1rem; }
+#viewer { max-width: 1000px; margin: 0 auto; }
+#viewer canvas { display: block; width: 100%; height: auto; margin: 0 auto 12px; background: white; }
 </style>
 </head>
 <body>
-<header>
-  <a href="fiches.html">Retour aux fiches</a>
-  <h1>GTO ENGAGEMENT EN MILIEU VICIÉ</h1>
-  <a id="download" download="GTO EMV.pdf" hidden>Télécharger le PDF</a>
-</header>
 <p id="status" role="status">Chargement du PDF…</p>
 <noscript>Activez JavaScript pour afficher ou télécharger le PDF.</noscript>
-<iframe id="viewer" title="GTO Engagement en milieu vicié" hidden></iframe>
-<script>
+<main id="viewer" aria-label="Document GTO Engagement en milieu vicié"></main>
+<script type="module">
 const status = document.getElementById("status");
-const download = document.getElementById("download");
 const viewer = document.getElementById("viewer");
+const library = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/";
 
-async function loadPdf() {
-  const parts = await Promise.all([1, 2, 3, 4].map(async number => {
-    const response = await fetch(`gto-emv-data/part-${number}.bin`);
-    if (!response.ok) throw new Error("Impossible de charger le PDF");
-    return response.arrayBuffer();
-  }));
-  if (parts.reduce((total, part) => total + part.byteLength, 0) !== 9121116) {
-    throw new Error("PDF incomplet");
+async function displayPdf() {
+  const [pdfjs, ...parts] = await Promise.all([
+    import(library + "legacy/build/pdf.mjs"),
+    ...[1, 2, 3, 4].map(async number => {
+      const response = await fetch(`gto-emv-data/part-${number}.bin`);
+      if (!response.ok) throw new Error("Impossible de charger le PDF");
+      return response.arrayBuffer();
+    }),
+  ]);
+  const original = new Blob(parts, {type: "application/pdf"});
+  if (original.size !== 9121116) throw new Error("PDF incomplet");
+  pdfjs.GlobalWorkerOptions.workerSrc = library + "legacy/build/pdf.worker.mjs";
+  const pdf = await pdfjs.getDocument({
+    data: await original.arrayBuffer(),
+    cMapUrl: library + "cmaps/",
+    cMapPacked: true,
+    standardFontDataUrl: library + "standard_fonts/",
+    isEvalSupported: false,
+  }).promise;
+
+  for (let number = 1; number <= pdf.numPages; number++) {
+    const page = await pdf.getPage(number);
+    const originalViewport = page.getViewport({scale: 1});
+    const width = Math.min(1000, viewer.clientWidth);
+    const viewport = page.getViewport({scale: width / originalViewport.width});
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.ceil(viewport.width * pixelRatio);
+    canvas.height = Math.ceil(viewport.height * pixelRatio);
+    canvas.setAttribute("aria-label", `Page ${number} sur ${pdf.numPages}`);
+    await page.render({
+      canvasContext: canvas.getContext("2d"),
+      viewport,
+      transform: [pixelRatio, 0, 0, pixelRatio, 0, 0],
+    }).promise;
+    viewer.append(canvas);
+    status.hidden = true;
   }
-  const url = URL.createObjectURL(new Blob(parts, {type: "application/pdf"}));
-  download.href = url;
-  download.hidden = false;
-  viewer.src = url;
-  viewer.hidden = false;
-  status.hidden = true;
 }
 
-loadPdf().catch(() => {
-  status.textContent = "Le PDF n’a pas pu être chargé. Actualisez la page pour réessayer.";
+displayPdf().catch(() => {
+  status.hidden = false;
+  status.textContent = "Le document n’a pas pu être affiché. Actualisez la page pour réessayer.";
 });
 </script>
 </body>
