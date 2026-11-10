@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Document · Portail GELD</title>
+<link rel="stylesheet" href="navigation-progress.css">
+<script src="navigation-progress.js" defer></script>
+<style>
+body { margin: 0; background: #fff; color: #101820; font: 16px system-ui, sans-serif; }
+#viewer { max-width: 1000px; margin: 0 auto; }
+#viewer canvas, #viewer video { display: block; width: 100%; height: auto; }
+#status:not(:empty) { padding: 1rem; }
+</style>
+</head>
+<body>
+<div id="loading" class="navigation-progress" role="progressbar" aria-label="Chargement du document"></div>
+<p id="status" role="status"></p>
+<main id="viewer"></main>
+<noscript>Activez JavaScript pour afficher le document.</noscript>
+<script type="module" src="document-viewer.js"></script>
+</body>
+</html>
