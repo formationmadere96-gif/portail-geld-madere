@@ -23,6 +23,8 @@
     .intro p:last-child { margin:12px 0 0; color:var(--muted); }
     .list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:22px; }
     .item { display:flex; align-items:center; gap:14px; min-height:88px; padding:17px 20px; border:1px solid var(--line); border-left:3px solid var(--tile,#ff941f); border-radius:16px; background:linear-gradient(110deg,rgba(255,148,31,.06),var(--panel) 45%); }
+    a.item { color:inherit; text-decoration:none; transition:transform .18s,border-color .18s,background .18s; }
+    a.item:hover, a.item:focus-visible { border-color:rgba(255,148,31,.55); background:linear-gradient(110deg,rgba(255,148,31,.14),var(--panel) 55%); transform:translateY(-2px); outline:none; }
     .item:nth-child(2n) { --tile:#65a9c9; }
     .doc-icon { display:grid; flex:0 0 42px; place-items:center; width:42px; height:42px; border-radius:13px; background:color-mix(in srgb,var(--tile,#ff941f) 18%,#192630); font-size:1.45rem; }
     .item h3 { margin:0; font-size:1.03rem; line-height:1.35; letter-spacing:.02em; }
@@ -36,35 +38,35 @@
   <main>
     <section class="intro"><p class="kicker">Documentation</p><h2>FICHES</h2><p>Fiches pratiques et ressources opérationnelles de la spécialité.</p></section>
     <div class="list">
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>MISSIONS</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>COMPOSITION</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>SOIEC</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>SMES</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>EQUIPEMENT EPI</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>LOTS GELD</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>ARI BI BOUTEILLES</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>RHINOEVAC</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>CAMÉRA THERMIQUE</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>CAMÉRA D'ATTAQUE</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>HALLIGAN TOOL</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>RIDEAU STOP FUMÉES</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>BATFAN</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>SPIRALED</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>CLÉ DE DÉRIVATION</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>BABOUIN</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>FAST BOARD</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>RIT PACK</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>PARC DE STATIONNEMENT COUVERT</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>GTO ENGAGEMENT EN MILIEU VICIÉ</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>TECHNIQUES DE RESPIRATION</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>SÉCURISATION POINT DE PÉNÉTRATION</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>BALISAGE</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>TOXICITÉ DES FUMÉES</h3></article>
+      <a class="item" href="fiche-missions.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>MISSIONS</h3></a>
+      <a class="item" href="fiche-composition.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>COMPOSITION</h3></a>
+      <a class="item" href="fiche-soiec.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>SOIEC</h3></a>
+      <a class="item" href="fiche-smes.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>SMES</h3></a>
+      <a class="item" href="fiche-equipement-epi.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>EQUIPEMENT EPI</h3></a>
+      <a class="item" href="fiche-lots-geld.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>LOTS GELD</h3></a>
+      <a class="item" href="fiche-ari-bi-bouteilles.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>ARI BI BOUTEILLES</h3></a>
+      <a class="item" href="fiche-rhinoevac.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>RHINOEVAC</h3></a>
+      <a class="item" href="fiche-camera-thermique.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>CAMÉRA THERMIQUE</h3></a>
+      <a class="item" href="fiche-camera-attaque.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>CAMÉRA D'ATTAQUE</h3></a>
+      <a class="item" href="fiche-halligan-tool.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>HALLIGAN TOOL</h3></a>
+      <a class="item" href="fiche-rideau-stop-fumees.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>RIDEAU STOP FUMÉES</h3></a>
+      <a class="item" href="fiche-batfan.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>BATFAN</h3></a>
+      <a class="item" href="fiche-spiraled.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>SPIRALED</h3></a>
+      <a class="item" href="fiche-cle-derivation.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>CLÉ DE DÉRIVATION</h3></a>
+      <a class="item" href="fiche-babouin.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>BABOUIN</h3></a>
+      <a class="item" href="fiche-fast-board.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>FAST BOARD</h3></a>
+      <a class="item" href="fiche-rit-pack.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>RIT PACK</h3></a>
+      <a class="item" href="fiche-parc-stationnement-couvert.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>PARC DE STATIONNEMENT COUVERT</h3></a>
+      <a class="item" href="fiche-gto-emv.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>GTO ENGAGEMENT EN MILIEU VICIÉ</h3></a>
+      <a class="item" href="fiche-techniques-respiration.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>TECHNIQUES DE RESPIRATION</h3></a>
+      <a class="item" href="fiche-securisation-point-penetration.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>SÉCURISATION POINT DE PÉNÉTRATION</h3></a>
+      <a class="item" href="fiche-balisage.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>BALISAGE</h3></a>
+      <a class="item" href="fiche-toxicite-fumees.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>TOXICITÉ DES FUMÉES</h3></a>
       <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>TASSS</h3></article>
       <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>SYSTÈME FEU</h3></article>
       <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>PHÉNOMÈNES THERMIQUES</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>TECHNIQUES DE LANCE</h3></article>
-      <article class="item"><span class="doc-icon" aria-hidden="true">📄</span><h3>SÉCURISATION DE PORTE</h3></article>
+      <a class="item" href="fiche-techniques-lance.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>TECHNIQUES DE LANCE</h3></a>
+      <a class="item" href="fiche-securisation-porte.pdf" target="_blank" rel="noopener"><span class="doc-icon" aria-hidden="true">📄</span><h3>SÉCURISATION DE PORTE</h3></a>
     </div>
   </main>
   <footer>Portail GELD MADERE <span>•</span> Fiches</footer>
