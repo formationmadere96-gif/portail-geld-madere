@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Techniques de respiration · Portail GELD</title>
+<style>
+body { margin: 0; background: #fff; color: #101820; font: 16px system-ui, sans-serif; }
+#status { padding: 1rem; }
+#viewer { max-width: 1000px; margin: 0 auto; }
+#viewer canvas { display: block; width: 100%; height: auto; margin: 0 auto; background: white; }
+</style>
+</head>
+<body>
+<p id="status" role="status">Chargement du PDF…</p>
+<noscript>Activez JavaScript pour afficher ou télécharger le PDF.</noscript>
+<main id="viewer" aria-label="Document Techniques de respiration"></main>
+<script type="module">
+const status = document.getElementById("status");
+const viewer = document.getElementById("viewer");
+const library = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/";
+
+async function displayPdf() {
+  const [pdfjs, ...parts] = await Promise.all([
+    import(library + "legacy/build/pdf.mjs"),
+    ...[1, 2, 3].map(async number => {
+      const response = await fetch(`techniques-respiration-data/part-${number}.bin`);
+      if (!response.ok) throw new Error("Impossible de charger le PDF");
+      return response.arrayBuffer();
+    }),
+  ]);
+  const original = new Blob(parts, {type: "application/pdf"});
+  if (original.size !== 4826251) throw new Error("PDF incomplet");
+  pdfjs.GlobalWorkerOptions.workerSrc = library + "legacy/build/pdf.worker.mjs";
+  const pdf = await pdfjs.getDocument({
+    data: await original.arrayBuffer(),
+    cMapUrl: library + "cmaps/",
+    cMapPacked: true,
+    standardFontDataUrl: library + "standard_fonts/",
+    isEvalSupported: false,
+  }).promise;
+
+  for (let number = 1; number <= pdf.numPages; number++) {
+    const page = await pdf.getPage(number);
+    const originalViewport = page.getViewport({scale: 1});
+    const width = Math.min(1000, viewer.clientWidth);
+    const viewport = page.getViewport({scale: width / originalViewport.width});
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.ceil(viewport.width * pixelRatio);
+    canvas.height = Math.ceil(viewport.height * pixelRatio);
+    canvas.setAttribute("aria-label", `Page ${number} sur ${pdf.numPages}`);
+    await page.render({
+      canvasContext: canvas.getContext("2d"),
+      viewport,
+      transform: [pixelRatio, 0, 0, pixelRatio, 0, 0],
+    }).promise;
+    viewer.append(canvas);
+    status.hidden = true;
+  }
+}
+
+displayPdf().catch(() => {
+  status.hidden = false;
+  status.textContent = "Le document n’a pas pu être affiché. Actualisez la page pour réessayer.";
+});
+</script>
+</body>
+</html>
