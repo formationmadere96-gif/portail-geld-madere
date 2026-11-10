@@ -84,11 +84,17 @@ if (!Object.hasOwn(files, name)) {
     const video = document.createElement("video");
     video.controls = true;
     video.playsInline = true;
-    video.preload = "metadata";
+    video.preload = "auto";
+    video.autoplay = true;
     video.addEventListener("loadedmetadata", () => { progress.hidden = true; }, {once: true});
     video.addEventListener("error", showError, {once: true});
     video.src = name;
     viewer.append(video);
+    video.play().catch(error => {
+      if (error.name !== "NotAllowedError") return;
+      video.muted = true;
+      video.play().catch(() => {});
+    });
   } else {
     displayPdf().catch(showError);
   }
