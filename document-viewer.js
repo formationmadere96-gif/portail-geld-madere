@@ -1,4 +1,11 @@
 const files = {
+  "fiche-tasss.pdf": "TASSS",
+  "fiche-systeme-feu.pdf": "SYSTÈME FEU",
+  "fiche-phenomenes-thermiques.pdf": "PHÉNOMÈNES THERMIQUES",
+  "fiche-gto-emv.pdf": "GTO ENGAGEMENT EN MILIEU VICIÉ",
+  "fiche-parc-stationnement-couvert.pdf": "PARC DE STATIONNEMENT COUVERT",
+  "fiche-techniques-respiration.pdf": "TECHNIQUES DE RESPIRATION",
+  "fiche-techniques-lance.pdf": "TECHNIQUES DE LANCE",
   "fiche-missions.pdf": "MISSIONS",
   "fiche-composition.pdf": "COMPOSITION",
   "fiche-soiec.pdf": "SOIEC",
@@ -99,3 +106,4 @@ if (!Object.hasOwn(files, name)) {
     displayPdf().catch(showError);
   }
 }
+
