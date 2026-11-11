@@ -45,6 +45,7 @@ const library = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/";
 
 function showError() {
   progress.hidden = true;
+  viewer.setAttribute("aria-busy", "false");
   status.textContent = "Le document n’a pas pu être affiché.";
   if (Object.hasOwn(files, name)) {
     const link = document.createElement("a");
@@ -55,6 +56,9 @@ function showError() {
 }
 
 async function displayPdf() {
+  viewer.setAttribute("aria-busy", "true");
+  status.textContent = "Chargement du document complet…";
+  const pages = document.createDocumentFragment();
   const pdfjs = await import(library + "legacy/build/pdf.mjs");
   pdfjs.GlobalWorkerOptions.workerSrc = library + "legacy/build/pdf.worker.mjs";
   const pdf = await pdfjs.getDocument({
@@ -78,9 +82,13 @@ async function displayPdf() {
       viewport,
       transform: [ratio, 0, 0, ratio, 0, 0],
     }).promise;
-    viewer.append(canvas);
-    progress.hidden = true;
+    pages.append(canvas);
+    status.textContent = `Chargement du document complet… ${number} / ${pdf.numPages} pages`;
   }
+  viewer.replaceChildren(pages);
+  viewer.setAttribute("aria-busy", "false");
+  status.textContent = "";
+  progress.hidden = true;
 }
 
 if (!Object.hasOwn(files, name)) {
