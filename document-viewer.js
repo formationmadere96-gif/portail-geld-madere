@@ -38,6 +38,7 @@ const files = {
   "Rideau-stop-fumees.mp4": "RIDEAU STOP FUMÉES"
 };
 const name = new URLSearchParams(location.search).get("f");
+const documentUrl = name === "fiche-parc-stationnement-couvert.pdf" ? name + "?v=psc-ac515e1019ef" : name;
 const progress = document.querySelector("#loading");
 const status = document.querySelector("#status");
 const viewer = document.querySelector("#viewer");
@@ -49,7 +50,7 @@ function showError() {
   status.textContent = "Le document n’a pas pu être affiché.";
   if (Object.hasOwn(files, name)) {
     const link = document.createElement("a");
-    link.href = name;
+    link.href = documentUrl;
     link.textContent = "Ouvrir le fichier";
     status.append(" ", link);
   }
@@ -62,7 +63,7 @@ async function displayPdf() {
   const pdfjs = await import(library + "legacy/build/pdf.mjs");
   pdfjs.GlobalWorkerOptions.workerSrc = library + "legacy/build/pdf.worker.mjs";
   const pdf = await pdfjs.getDocument({
-    url: name,
+    url: documentUrl,
     cMapUrl: library + "cmaps/",
     cMapPacked: true,
     standardFontDataUrl: library + "standard_fonts/",
